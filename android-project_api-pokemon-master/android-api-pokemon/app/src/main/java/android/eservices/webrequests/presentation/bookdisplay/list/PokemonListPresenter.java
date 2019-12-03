@@ -24,17 +24,16 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
     private PokemonDisplayRepository pokemonDisplayRepository;
     private CompositeDisposable compositeDisposable;
 
-    final public List<Pokemon> toMapAndDisplay;
 
     public PokemonListPresenter(PokemonDisplayRepository pokemonDisplayRepository, PokemonToViewModelMapper mapper) {
         this.pokemonDisplayRepository = pokemonDisplayRepository;
         this.mapper = mapper;
         this.compositeDisposable = new CompositeDisposable();
-        this.toMapAndDisplay = new ArrayList<>();
     }
 
     @Override
     public void searchPokemonByName(String name) {
+        final List<Pokemon> tmp = new ArrayList<>();
         compositeDisposable.clear();
         compositeDisposable.add(pokemonDisplayRepository.searchPokemonsByName(name)
             .subscribeOn(Schedulers.io())
@@ -42,9 +41,8 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
              .subscribeWith(new DisposableSingleObserver<Pokemon>() {
                  @Override
                  public void onSuccess(Pokemon pokemon) {
-                     toMapAndDisplay.add(pokemon);
-                     //TODO TEMPORAIREMENT COMMENTE
-                    //view.displayPokemons(mapper.map(tmp));
+                     tmp.add(pokemon);
+                    view.displayPokemons(mapper.map(tmp));
                  }
 
                  @Override
@@ -58,7 +56,7 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
 
     @Override
     public void searchPokemonByInterval(int offset, int limit) {
-
+        final List<Pokemon> tmp_interval = new ArrayList<>();
         final List<PokemonElement> tmp_interval_elem = new ArrayList<>();
         compositeDisposable.clear();
         compositeDisposable.add(pokemonDisplayRepository.searchPokemonByInterval(offset, limit)
@@ -68,7 +66,6 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
                     @Override
                     public void onSuccess(PokemonSearchResponse pokemonSearchResponse) {
                         for (PokemonElement p : pokemonSearchResponse.getPokemonElementList()) {
-                            //TODO DECOUVRIR POURQUOI L'APPLICATION NE PASSE JAMAIS PAR ICI
                             tmp_interval_elem.add(p);
                         }
                     }
@@ -81,17 +78,16 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
 
         );
         compositeDisposable.clear();
-        //TODO TEMPORAIRE
         PokemonElement theP = new PokemonElement();
         theP.setName("ditto");
         PokemonElement theP2 = new PokemonElement();
         theP2.setName("bulbasaur");
         tmp_interval_elem.add(theP);
         tmp_interval_elem.add(theP2);
-        //
+        
         for (PokemonElement p : tmp_interval_elem) {
             this.searchPokemonByName(p.getName());
-/*
+
             compositeDisposable.add(pokemonDisplayRepository.searchPokemonsByName(p.getName())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -111,11 +107,9 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
             );
 
 
- */
-        }
 
-        //TODO : capter lorsque les requêtes de searchByName sont terminées car sinon ça affiche un truc vide
-        view.displayPokemons(mapper.map(toMapAndDisplay));
+        }
+        view.displayPokemons(mapper.map(tmp_interval));
 
     }
 
