@@ -43,7 +43,7 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
                  @Override
                  public void onSuccess(Pokemon pokemon) {
                      toMapAndDisplay.add(pokemon);
-                     //TODO TEMPORAIRE
+                     //TODO TEMPORAIREMENT COMMENTE
                     //view.displayPokemons(mapper.map(tmp));
                  }
 
