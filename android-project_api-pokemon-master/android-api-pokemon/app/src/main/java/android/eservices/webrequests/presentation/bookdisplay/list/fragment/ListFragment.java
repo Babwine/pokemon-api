@@ -59,8 +59,8 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         progressBar = rootView.findViewById(R.id.progress_bar);
 
         pokemonListPresenter = new PokemonListPresenter(FakeDependencyInjection.getBookDisplayRepository(), new PokemonToViewModelMapper());
-        this.displayPokemonXtoXPlusY(1,20);
         pokemonListPresenter.attachView(this);
+        this.displayPokemonXtoXPlusY(0,20);
     }
 
     private void setupSearchView() {

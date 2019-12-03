@@ -5,6 +5,7 @@ import android.eservices.webrequests.data.api.model.Pokemon;
 import android.eservices.webrequests.data.api.model.PokemonSearchResponse;
 import android.eservices.webrequests.data.api.model.pokemonsearchresponse.PokemonElement;
 import android.eservices.webrequests.data.repository.bookdisplay.PokemonDisplayRepository;
+import android.eservices.webrequests.presentation.bookdisplay.list.adapter.PokemonItemViewModel;
 import android.eservices.webrequests.presentation.bookdisplay.list.mapper.PokemonToViewModelMapper;
 
 import java.util.ArrayList;
@@ -48,32 +49,61 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
                  }
              })
         );
+
     }
 
     @Override
     public void searchPokemonByInterval(int offset, int limit) {
+
+        final List<PokemonElement> tmp_interval_elem = new ArrayList<>();
+        final List<Pokemon> tmp_interval = new ArrayList<>();
         compositeDisposable.clear();
-        compositeDisposable.add(pokemonDisplayRepository.searchPokemonsByInterval(offset, limit)
+        compositeDisposable.add(pokemonDisplayRepository.searchPokemonByInterval(offset, limit)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<PokemonSearchResponse>() {
                     @Override
                     public void onSuccess(PokemonSearchResponse pokemonSearchResponse) {
-                        final List<Pokemon> tmp_interval = new ArrayList<>();
                         for (PokemonElement p : pokemonSearchResponse.getPokemonElementList()) {
-                            String name = p.getName();
-                            //TODO pour chaque Pokémon, récupérer le Pokemon à partir du name et ajouter le pokémon dans la liste
+                            tmp_interval_elem.add(p);
                         }
-                        view.displayPokemons(mapper.map(tmp_interval));
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        System.out.println(tmp_interval_elem.toString());
                         System.out.println(e.toString());
                     }
                 })
 
         );
+        compositeDisposable.clear();
+        for (PokemonElement p : tmp_interval_elem) {
+            this.searchPokemonByName(p.getName());
+
+            compositeDisposable.add(pokemonDisplayRepository.searchPokemonsByName(p.getName())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableSingleObserver<Pokemon>() {
+                        @Override
+                        public void onSuccess(Pokemon pokemon) {
+                            tmp_interval.add(pokemon);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            System.out.println(e.toString());
+                        }
+                    })
+
+
+            );
+
+
+        }
+
+        view.displayPokemons(mapper.map(tmp_interval));
+
     }
 
     @Override

@@ -41,7 +41,7 @@ public class PokemonDisplayDataRepository implements PokemonDisplayRepository {
     }
 
     @Override
-    public Single<PokemonSearchResponse> searchPokemonsByInterval(int offset, int limit) {
+    public Single<PokemonSearchResponse> searchPokemonByInterval(int offset, int limit) {
         return pokemonDisplayRemoteDataSource.searchPokemonByInterval(offset, limit);
     }
 

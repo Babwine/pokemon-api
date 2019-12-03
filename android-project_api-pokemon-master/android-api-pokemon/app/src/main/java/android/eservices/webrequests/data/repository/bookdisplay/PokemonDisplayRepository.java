@@ -12,7 +12,7 @@ public interface PokemonDisplayRepository {
 
     Single<Pokemon> searchPokemonsByName(String name);
 
-    Single<PokemonSearchResponse> searchPokemonsByInterval(int offset, int limit);
+    Single<PokemonSearchResponse> searchPokemonByInterval(int offset, int limit);
 
     Completable addPokemonDetails(int pokemonId);
 }
