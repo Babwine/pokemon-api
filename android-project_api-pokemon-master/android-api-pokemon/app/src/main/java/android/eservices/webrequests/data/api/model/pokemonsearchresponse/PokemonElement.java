@@ -7,7 +7,7 @@ public class PokemonElement {
         return name;
     }
 
-    public void setUrl(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

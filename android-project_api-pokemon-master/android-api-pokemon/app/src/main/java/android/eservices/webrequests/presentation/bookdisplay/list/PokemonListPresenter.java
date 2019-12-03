@@ -71,18 +71,22 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        System.out.println(tmp_interval_elem.toString());
                         System.out.println(e.toString());
                     }
                 })
 
         );
         compositeDisposable.clear();
+        PokemonElement theP = new PokemonElement();
+        theP.setName("ditto");
+        PokemonElement theP2 = new PokemonElement();
+        theP2.setName("bulbasaur");
+        tmp_interval_elem.add(theP);
+        tmp_interval_elem.add(theP2);
         for (PokemonElement p : tmp_interval_elem) {
             this.searchPokemonByName(p.getName());
 
             compositeDisposable.add(pokemonDisplayRepository.searchPokemonsByName(p.getName())
-                    .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableSingleObserver<Pokemon>() {
                         @Override

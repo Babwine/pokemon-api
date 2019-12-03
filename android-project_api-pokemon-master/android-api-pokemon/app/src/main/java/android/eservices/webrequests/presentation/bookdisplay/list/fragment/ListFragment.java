@@ -28,7 +28,7 @@ import java.util.TimerTask;
 
 public class ListFragment extends Fragment implements PokemonListContract.View, PokemonActionInterface {
 
-    public static final String TAB_NAME = "Search";
+    public static final String TAB_NAME = "List";
     private View rootView;
     private PokemonListContract.Presenter pokemonListPresenter;
     private SearchView searchView;
@@ -58,7 +58,7 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         setupRecyclerView();
         progressBar = rootView.findViewById(R.id.progress_bar);
 
-        pokemonListPresenter = new PokemonListPresenter(FakeDependencyInjection.getBookDisplayRepository(), new PokemonToViewModelMapper());
+        pokemonListPresenter = new PokemonListPresenter(FakeDependencyInjection.getPokemonDisplayRepository(), new PokemonToViewModelMapper());
         pokemonListPresenter.attachView(this);
         this.displayPokemonXtoXPlusY(0,20);
     }
@@ -78,7 +78,6 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
                 if (s.length() == 0) {
                     pokemonListPresenter.cancelSubscription();
                     progressBar.setVisibility(View.GONE);
-                    displayPokemonXtoXPlusY(1,20);
                 } else {
                     progressBar.setVisibility(View.VISIBLE);
                     timer.cancel();

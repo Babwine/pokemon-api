@@ -1,6 +1,7 @@
 package android.eservices.webrequests.presentation.bookdisplay;
 
 import android.eservices.webrequests.R;
+import android.eservices.webrequests.presentation.bookdisplay.grid.fragment.GridFragment;
 import android.eservices.webrequests.presentation.bookdisplay.list.fragment.ListFragment;
 import android.os.Bundle;
 
@@ -25,7 +26,7 @@ public class PokemonDisplayActivity extends AppCompatActivity {
 
 
         final ListFragment listFragment = ListFragment.newInstance();
-        final ListFragment fragmentTwo = ListFragment.newInstance();
+        final GridFragment gridFragment = GridFragment.newInstance();
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -33,7 +34,7 @@ public class PokemonDisplayActivity extends AppCompatActivity {
                 if (position == 0) {
                     return listFragment;
                 }
-                return fragmentTwo;
+                return gridFragment;
             }
 
             @Override
@@ -41,7 +42,7 @@ public class PokemonDisplayActivity extends AppCompatActivity {
                 if (position == 0) {
                     return ListFragment.TAB_NAME;
                 }
-                return ListFragment.TAB_NAME;
+                return GridFragment.TAB_NAME;
             }
 
             @Override

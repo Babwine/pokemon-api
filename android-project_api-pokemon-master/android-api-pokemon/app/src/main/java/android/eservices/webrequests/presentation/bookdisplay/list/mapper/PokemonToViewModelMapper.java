@@ -31,8 +31,8 @@ public class PokemonToViewModelMapper {
 
     public List<PokemonItemViewModel> map(List<Pokemon> pokemonList) {
         List<PokemonItemViewModel> pokemonItemViewModelList = new ArrayList<>();
-        for (Pokemon book : pokemonList) {
-            pokemonItemViewModelList.add(map(book));
+        for (Pokemon pokemon : pokemonList) {
+            pokemonItemViewModelList.add(map(pokemon));
         }
         return pokemonItemViewModelList;
     }

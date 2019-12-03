@@ -68,7 +68,7 @@ public class FakeDependencyInjection {
         return gson;
     }
 
-    public static PokemonDatabase getBookDatabase() {
+    public static PokemonDatabase getPokemonDatabase() {
         if (pokemonDatabase == null) {
             pokemonDatabase = Room.databaseBuilder(applicationContext,
                     PokemonDatabase.class, "book-database").build();
@@ -76,10 +76,10 @@ public class FakeDependencyInjection {
         return pokemonDatabase;
     }
 
-    public static PokemonDisplayRepository getBookDisplayRepository() {
+    public static PokemonDisplayRepository getPokemonDisplayRepository() {
         if (pokemonDisplayRepository == null) {
             pokemonDisplayRepository = new PokemonDisplayDataRepository(
-                    new PokemonDisplayLocalDataSource(getBookDatabase()),
+                    new PokemonDisplayLocalDataSource(getPokemonDatabase()),
                     new PokemonDisplayRemoteDataSource(getPokemonDisplayService()),
                     new PokemonToPokemonEntityMapper()
             );
