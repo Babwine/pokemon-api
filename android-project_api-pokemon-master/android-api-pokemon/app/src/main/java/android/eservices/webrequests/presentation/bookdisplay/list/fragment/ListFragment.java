@@ -77,6 +77,7 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
             public boolean onQueryTextChange(final String s) {
                 if (s.length() == 0) {
                     pokemonListPresenter.cancelSubscription();
+                    pokemonListPresenter.searchPokemonByInterval(0,20);
                     progressBar.setVisibility(View.GONE);
                 } else {
                     progressBar.setVisibility(View.VISIBLE);

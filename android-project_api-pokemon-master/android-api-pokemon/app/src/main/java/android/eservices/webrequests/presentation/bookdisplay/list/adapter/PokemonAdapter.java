@@ -52,7 +52,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         void bind(PokemonItemViewModel pokemonItemViewModel) {
             this.pokemonItemViewModel = pokemonItemViewModel;
             nameTextView.setText(pokemonItemViewModel.getPokemonName());
-            typesTextView.setText(pokemonItemViewModel.getPokemonTypes());
+            typesTextView.setText("#"+pokemonItemViewModel.getPokemonId());
             Glide.with(v)
                     .load(pokemonItemViewModel.getSpriteUrl())
                     .centerCrop()

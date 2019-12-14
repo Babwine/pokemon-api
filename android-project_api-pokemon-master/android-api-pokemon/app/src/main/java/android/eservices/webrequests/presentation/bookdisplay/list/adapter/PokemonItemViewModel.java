@@ -30,11 +30,4 @@ public class PokemonItemViewModel {
         this.pokemonName = pokemonName;
     }
 
-    public String getPokemonTypes() {
-        return pokemonTypes;
-    }
-
-    public void setPokemonTypes(String pokemonTypes) {
-        this.pokemonTypes = pokemonTypes;
-    }
 }

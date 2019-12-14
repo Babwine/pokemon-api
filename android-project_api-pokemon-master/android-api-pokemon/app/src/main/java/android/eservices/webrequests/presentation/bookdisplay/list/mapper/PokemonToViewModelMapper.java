@@ -18,13 +18,6 @@ public class PokemonToViewModelMapper {
         pokemonItemViewModel.setPokemonId(pokemon.getId());
         pokemonItemViewModel.setPokemonName(FakeDependencyInjection.toUpperCaseFirstChar(pokemon.getSpecies().getName()));
 
-        String typesString = "";
-        for (TypeElement typeElem : pokemon.getTypes()) {
-            typesString += FakeDependencyInjection.toUpperCaseFirstChar(typeElem.getType().getName()) + " | ";
-        }
-        typesString = typesString.substring(0,typesString.length()-3);
-        pokemonItemViewModel.setPokemonTypes(typesString);
-
         pokemonItemViewModel.setSpriteUrl(pokemon.getSprites().getFront_default());
 
         return pokemonItemViewModel;
@@ -35,8 +28,8 @@ public class PokemonToViewModelMapper {
 
         int index = pokemonElem.getUrl().substring(0,pokemonElem.getUrl().length()-1).lastIndexOf("/");
         int id = Integer.parseInt(pokemonElem.getUrl().substring(index+1, pokemonElem.getUrl().length()-1));
+
         pokemonItemViewModel.setPokemonId(id);
-        pokemonItemViewModel.setPokemonTypes("#"+id);
         pokemonItemViewModel.setPokemonName(FakeDependencyInjection.toUpperCaseFirstChar(pokemonElem.getName()));
 
         pokemonItemViewModel.setSpriteUrl("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+id+".png");
