@@ -60,7 +60,7 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
 
         pokemonListPresenter = new PokemonListPresenter(FakeDependencyInjection.getPokemonDisplayRepository(), new PokemonToViewModelMapper());
         pokemonListPresenter.attachView(this);
-        this.displayPokemonXtoXPlusY(0,20);
+        this.displayPokemonXtoXPlusY(0,807);
     }
 
     private void setupSearchView() {
@@ -77,7 +77,7 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
             public boolean onQueryTextChange(final String s) {
                 if (s.length() == 0) {
                     pokemonListPresenter.cancelSubscription();
-                    pokemonListPresenter.searchPokemonByInterval(0,20);
+                    pokemonListPresenter.searchPokemonByInterval(0,807);
                     progressBar.setVisibility(View.GONE);
                 } else {
                     progressBar.setVisibility(View.VISIBLE);
