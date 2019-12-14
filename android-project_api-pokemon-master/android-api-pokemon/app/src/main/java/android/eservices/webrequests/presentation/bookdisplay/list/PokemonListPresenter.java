@@ -56,7 +56,6 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
 
     @Override
     public void searchPokemonByInterval(int offset, int limit) {
-        final List<Pokemon> tmp_interval = new ArrayList<>();
         final List<PokemonElement> tmp_interval_elem = new ArrayList<>();
         compositeDisposable.clear();
         compositeDisposable.add(pokemonDisplayRepository.searchPokemonByInterval(offset, limit)
@@ -68,6 +67,7 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
                         for (PokemonElement p : pokemonSearchResponse.getPokemonElementList()) {
                             tmp_interval_elem.add(p);
                         }
+                        view.displayPokemons(mapper.mapElem(tmp_interval_elem));
                     }
 
                     @Override
@@ -77,39 +77,6 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
                 })
 
         );
-        compositeDisposable.clear();
-        PokemonElement theP = new PokemonElement();
-        theP.setName("ditto");
-        PokemonElement theP2 = new PokemonElement();
-        theP2.setName("bulbasaur");
-        tmp_interval_elem.add(theP);
-        tmp_interval_elem.add(theP2);
-        
-        for (PokemonElement p : tmp_interval_elem) {
-            this.searchPokemonByName(p.getName());
-
-            compositeDisposable.add(pokemonDisplayRepository.searchPokemonsByName(p.getName())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<Pokemon>() {
-                        @Override
-                        public void onSuccess(Pokemon pokemon) {
-                            tmp_interval.add(pokemon);
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            System.out.println(e.toString());
-                        }
-                    })
-
-
-            );
-
-
-
-        }
-        view.displayPokemons(mapper.map(tmp_interval));
 
     }
 
