@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
+//TODO GRIDFRAGMENT + ACTIVITY DETAILS
 public class GridFragment extends Fragment implements PokemonListContract.View, PokemonActionInterface {
 
 
