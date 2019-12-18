@@ -1,14 +1,13 @@
-package android.eservices.webrequests.presentation.bookdisplay.list;
+package android.eservices.webrequests.presentation.pokemondisplay.grid;
 
-import android.eservices.webrequests.presentation.bookdisplay.list.adapter.PokemonItemViewModel;
+import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonItemViewModel;
 
 import java.util.List;
 
-public interface PokemonListContract {
+public interface PokemonGridContract {
     interface View {
         void displayPokemons(List<PokemonItemViewModel> pokemonItemViewModelList);
 
-        void onPokemonDetailsAdded();
     }
 
     interface Presenter {
@@ -16,7 +15,6 @@ public interface PokemonListContract {
 
         void searchPokemonByInterval(int offset, int limit);
 
-        void addPokemonDetails(int pokemonId);
 
         void attachView(View view);
 

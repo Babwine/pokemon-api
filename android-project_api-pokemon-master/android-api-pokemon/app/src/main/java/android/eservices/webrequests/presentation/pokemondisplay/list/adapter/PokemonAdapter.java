@@ -1,11 +1,12 @@
-package android.eservices.webrequests.presentation.bookdisplay.grid.adapter;
+package android.eservices.webrequests.presentation.pokemondisplay.list.adapter;
 
-import android.eservices.webrequests.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.eservices.webrequests.R;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

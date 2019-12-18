@@ -8,7 +8,7 @@ import io.reactivex.Completable;
 import io.reactivex.Single;
 
 public interface PokemonDisplayRepository {
-    Single<PokemonEntity> getPokemonById(int id);
+    Single<Pokemon> getPokemonById(int id);
 
     Single<Pokemon> searchPokemonsByName(String name);
 

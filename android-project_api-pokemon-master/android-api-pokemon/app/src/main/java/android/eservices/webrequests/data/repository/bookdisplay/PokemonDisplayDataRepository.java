@@ -31,8 +31,8 @@ public class PokemonDisplayDataRepository implements PokemonDisplayRepository {
     }
 
     @Override
-    public Single<PokemonEntity> getPokemonById(int id) {
-        return pokemonDisplayLocalDataSource.loadPokemon(id);
+    public Single<Pokemon> getPokemonById(int id) {
+        return pokemonDisplayRemoteDataSource.getPokemonById(id);
     }
 
     @Override

@@ -1,46 +1,46 @@
-package android.eservices.webrequests.presentation.bookdisplay.list.fragment;
+package android.eservices.webrequests.presentation.pokemondisplay.grid.fragment;
 
+import android.content.Intent;
+import android.eservices.webrequests.R;
 import android.eservices.webrequests.data.di.FakeDependencyInjection;
-import android.eservices.webrequests.presentation.bookdisplay.list.PokemonListContract;
-import android.eservices.webrequests.presentation.bookdisplay.list.PokemonListPresenter;
-import android.eservices.webrequests.presentation.bookdisplay.list.adapter.PokemonActionInterface;
-import android.eservices.webrequests.presentation.bookdisplay.list.adapter.PokemonAdapter;
-import android.eservices.webrequests.presentation.bookdisplay.list.adapter.PokemonItemViewModel;
-import android.eservices.webrequests.presentation.bookdisplay.list.mapper.PokemonToViewModelMapper;
+import android.eservices.webrequests.presentation.pokemondisplay.details.activity.PokemonDetailsDisplayActivity;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.PokemonGridContract;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.PokemonGridPresenter;
+import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonActionInterface;
+import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonAdapter;
+import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonItemViewModel;
+import android.eservices.webrequests.presentation.pokemondisplay.list.mapper.PokemonToViewModelMapper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.eservices.webrequests.R;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ListFragment extends Fragment implements PokemonListContract.View, PokemonActionInterface {
+//TODO GRIDFRAGMENT + ACTIVITY DETAILS
+public class GridFragment extends Fragment implements PokemonGridContract.View, PokemonActionInterface {
 
-    public static final String TAB_NAME = "List";
+
+    public static final String TAB_NAME = "Grid";
     private View rootView;
-    private PokemonListContract.Presenter pokemonListPresenter;
+    private PokemonGridContract.Presenter pokemonGridPresenter;
     private SearchView searchView;
     private RecyclerView recyclerView;
     private PokemonAdapter pokemonAdapter;
     private ProgressBar progressBar;
 
-
-    private ListFragment() {}
-
-    public static ListFragment newInstance() {
-        return new ListFragment();
+    public static GridFragment newInstance() {
+        return new GridFragment();
     }
 
     @Nullable
@@ -58,8 +58,8 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         setupRecyclerView();
         progressBar = rootView.findViewById(R.id.progress_bar);
 
-        pokemonListPresenter = new PokemonListPresenter(FakeDependencyInjection.getPokemonDisplayRepository(), new PokemonToViewModelMapper());
-        pokemonListPresenter.attachView(this);
+        pokemonGridPresenter = new PokemonGridPresenter(FakeDependencyInjection.getPokemonDisplayRepository(), new PokemonToViewModelMapper());
+        pokemonGridPresenter.attachView(this);
         this.displayPokemonXtoXPlusY(0,807);
     }
 
@@ -76,8 +76,8 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
             @Override
             public boolean onQueryTextChange(final String s) {
                 if (s.length() == 0) {
-                    pokemonListPresenter.cancelSubscription();
-                    pokemonListPresenter.searchPokemonByInterval(0,807);
+                    pokemonGridPresenter.cancelSubscription();
+                    pokemonGridPresenter.searchPokemonByInterval(0,807);
                     progressBar.setVisibility(View.GONE);
                 } else {
                     progressBar.setVisibility(View.VISIBLE);
@@ -93,7 +93,7 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            pokemonListPresenter.searchPokemonByName(s.toLowerCase());
+                            pokemonGridPresenter.searchPokemonByName(s.toLowerCase());
                         }
                     }, sleep);
                 }
@@ -106,13 +106,13 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         recyclerView = rootView.findViewById(R.id.recycler_view);
         pokemonAdapter = new PokemonAdapter(this);
         recyclerView.setAdapter(pokemonAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        pokemonListPresenter.detachView();
+        pokemonGridPresenter.detachView();
     }
 
     @Override
@@ -121,17 +121,15 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         pokemonAdapter.bindViewModels(pokemonItemViewModelList);
     }
 
-    @Override
-    public void onPokemonDetailsAdded() {
-        //TODO
-    }
 
     @Override
     public void onPokemonClicked(int pokemonId) {
-        //TODO
+        Intent i = new Intent(getContext(), PokemonDetailsDisplayActivity.class);
+        i.putExtra("pokemonId", pokemonId);
+        startActivity(i);
     }
 
     public void displayPokemonXtoXPlusY(int x, int y) {
-        pokemonListPresenter.searchPokemonByInterval(x, y);
+        pokemonGridPresenter.searchPokemonByInterval(x, y);
     }
 }

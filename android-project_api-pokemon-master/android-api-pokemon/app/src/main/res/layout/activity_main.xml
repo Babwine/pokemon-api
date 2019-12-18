@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundItem"
-    tools:context=".presentation.bookdisplay.PokemonDisplayActivity">
+    tools:context=".presentation.pokemondisplay.PokemonDisplayActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/tab_viewpager"

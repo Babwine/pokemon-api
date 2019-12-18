@@ -1,4 +1,4 @@
-package android.eservices.webrequests.presentation.bookdisplay.list.adapter;
+package android.eservices.webrequests.presentation.pokemondisplay.grid.adapter;
 
 public class PokemonItemViewModel {
     private int pokemonId;

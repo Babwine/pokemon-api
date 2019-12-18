@@ -1,4 +1,4 @@
-package android.eservices.webrequests.presentation.bookdisplay.grid.adapter;
+package android.eservices.webrequests.presentation.pokemondisplay.grid.adapter;
 
 public interface PokemonActionInterface {
 

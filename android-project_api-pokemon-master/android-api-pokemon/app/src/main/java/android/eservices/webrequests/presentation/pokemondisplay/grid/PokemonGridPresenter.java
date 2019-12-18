@@ -1,31 +1,27 @@
-package android.eservices.webrequests.presentation.bookdisplay.list;
+package android.eservices.webrequests.presentation.pokemondisplay.grid;
 
-import android.eservices.webrequests.data.api.PokemonDisplayService;
 import android.eservices.webrequests.data.api.model.Pokemon;
 import android.eservices.webrequests.data.api.model.PokemonSearchResponse;
 import android.eservices.webrequests.data.api.model.pokemonsearchresponse.PokemonElement;
 import android.eservices.webrequests.data.repository.bookdisplay.PokemonDisplayRepository;
-import android.eservices.webrequests.presentation.bookdisplay.list.adapter.PokemonItemViewModel;
-import android.eservices.webrequests.presentation.bookdisplay.list.mapper.PokemonToViewModelMapper;
+import android.eservices.webrequests.presentation.pokemondisplay.list.mapper.PokemonToViewModelMapper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class PokemonListPresenter implements PokemonListContract.Presenter {
-    private PokemonListContract.View view;
+public class PokemonGridPresenter implements PokemonGridContract.Presenter {
+    private PokemonGridContract.View view;
     private PokemonToViewModelMapper mapper;
     private PokemonDisplayRepository pokemonDisplayRepository;
     private CompositeDisposable compositeDisposable;
 
 
-    public PokemonListPresenter(PokemonDisplayRepository pokemonDisplayRepository, PokemonToViewModelMapper mapper) {
+    public PokemonGridPresenter(PokemonDisplayRepository pokemonDisplayRepository, PokemonToViewModelMapper mapper) {
         this.pokemonDisplayRepository = pokemonDisplayRepository;
         this.mapper = mapper;
         this.compositeDisposable = new CompositeDisposable();
@@ -80,27 +76,9 @@ public class PokemonListPresenter implements PokemonListContract.Presenter {
 
     }
 
-    @Override
-    public void addPokemonDetails(int pokemonId) {
-        compositeDisposable.add(pokemonDisplayRepository.addPokemonDetails(pokemonId)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(new DisposableCompletableObserver() {
-                @Override
-                public void onComplete() {
-                    view.onPokemonDetailsAdded();
-                }
-
-                @Override
-                public void onError(Throwable e) {
-
-                }
-            })
-        );
-    }
 
     @Override
-    public void attachView(PokemonListContract.View view) {
+    public void attachView(PokemonGridContract.View view) {
         this.view = view;
     }
 

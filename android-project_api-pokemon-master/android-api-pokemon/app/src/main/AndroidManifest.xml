@@ -15,7 +15,16 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".presentation.bookdisplay.PokemonDisplayActivity"
+            android:name=".presentation.pokemondisplay.PokemonDisplayActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.pokemondisplay.details.activity.PokemonDetailsDisplayActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

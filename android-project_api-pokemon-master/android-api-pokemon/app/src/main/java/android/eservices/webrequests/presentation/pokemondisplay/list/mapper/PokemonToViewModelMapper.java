@@ -1,11 +1,9 @@
-package android.eservices.webrequests.presentation.bookdisplay.list.mapper;
+package android.eservices.webrequests.presentation.pokemondisplay.list.mapper;
 
 import android.eservices.webrequests.data.api.model.Pokemon;
-import android.eservices.webrequests.data.api.model.pokemon.AbilityElement;
-import android.eservices.webrequests.data.api.model.pokemon.TypeElement;
 import android.eservices.webrequests.data.api.model.pokemonsearchresponse.PokemonElement;
 import android.eservices.webrequests.data.di.FakeDependencyInjection;
-import android.eservices.webrequests.presentation.bookdisplay.list.adapter.PokemonItemViewModel;
+import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonItemViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

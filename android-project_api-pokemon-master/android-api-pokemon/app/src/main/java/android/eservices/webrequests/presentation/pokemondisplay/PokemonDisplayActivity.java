@@ -1,8 +1,8 @@
-package android.eservices.webrequests.presentation.bookdisplay;
+package android.eservices.webrequests.presentation.pokemondisplay;
 
 import android.eservices.webrequests.R;
-import android.eservices.webrequests.presentation.bookdisplay.grid.fragment.GridFragment;
-import android.eservices.webrequests.presentation.bookdisplay.list.fragment.ListFragment;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.fragment.GridFragment;
+import android.eservices.webrequests.presentation.pokemondisplay.list.fragment.ListFragment;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
