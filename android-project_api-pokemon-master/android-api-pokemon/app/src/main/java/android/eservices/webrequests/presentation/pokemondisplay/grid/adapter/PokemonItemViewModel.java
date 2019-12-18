@@ -4,7 +4,6 @@ public class PokemonItemViewModel {
     private int pokemonId;
     private String spriteUrl;
     private String pokemonName;
-    private String pokemonTypes;
 
     public int getPokemonId() {
         return pokemonId;

@@ -10,8 +10,6 @@ import android.eservices.webrequests.presentation.pokemondisplay.details.adapter
 import android.eservices.webrequests.presentation.pokemondisplay.details.adapter.PokemonDetailsItemViewModel;
 import android.eservices.webrequests.presentation.pokemondisplay.details.mapper.PokemonDetailsToViewModelMapper;
 import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;

@@ -3,8 +3,6 @@ package android.eservices.webrequests.data.api;
 import android.eservices.webrequests.data.api.model.Pokemon;
 import android.eservices.webrequests.data.api.model.PokemonSearchResponse;
 
-import java.util.List;
-
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

@@ -8,8 +8,6 @@ import android.eservices.webrequests.data.repository.bookdisplay.local.PokemonDi
 import android.eservices.webrequests.data.repository.bookdisplay.mapper.PokemonToPokemonEntityMapper;
 import android.eservices.webrequests.data.repository.bookdisplay.remote.PokemonDisplayRemoteDataSource;
 
-import java.util.List;
-
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
 import io.reactivex.Single;

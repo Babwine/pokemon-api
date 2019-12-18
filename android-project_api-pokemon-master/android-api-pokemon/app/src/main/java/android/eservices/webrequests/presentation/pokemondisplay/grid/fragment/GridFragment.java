@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-//TODO GRIDFRAGMENT + ACTIVITY DETAILS
 public class GridFragment extends Fragment implements PokemonGridContract.View, PokemonActionInterface {
 
 
