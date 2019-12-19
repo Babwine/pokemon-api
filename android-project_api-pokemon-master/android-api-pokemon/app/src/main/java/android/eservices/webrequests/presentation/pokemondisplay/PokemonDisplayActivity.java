@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+/**
+ * The main Activity class
+ */
 public class PokemonDisplayActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -21,6 +24,9 @@ public class PokemonDisplayActivity extends AppCompatActivity {
         setupViewPagerAndTabs();
     }
 
+    /**
+     * A function to setup the viewpager of the app and its tabs (the fragments used)
+     */
     private void setupViewPagerAndTabs() {
         viewPager = findViewById(R.id.tab_viewpager);
 

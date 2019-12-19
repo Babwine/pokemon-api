@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * A class to stock a list of Pokemon
+ */
 public class PokemonSearchResponse {
     //If many pokemon
     @SerializedName("results")

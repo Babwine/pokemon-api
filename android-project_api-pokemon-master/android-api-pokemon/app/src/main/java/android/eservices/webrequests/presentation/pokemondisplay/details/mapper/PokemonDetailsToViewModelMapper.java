@@ -9,8 +9,16 @@ import android.eservices.webrequests.presentation.pokemondisplay.details.adapter
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class for a mapper from a Pokemon into a Pokemon details based view model
+ */
 public class PokemonDetailsToViewModelMapper {
 
+    /**
+     * A function to map the Pokemon <code>pokemon</code> into a details view model
+     * @param pokemon the Pokemon to map
+     * @return the mapped view model
+     */
     public PokemonDetailsItemViewModel map(Pokemon pokemon) {
         PokemonDetailsItemViewModel pokemonDetailsItemViewModel = new PokemonDetailsItemViewModel();
 
@@ -41,6 +49,11 @@ public class PokemonDetailsToViewModelMapper {
     }
 
 
+    /**
+     * A function to map every Pokemon in the list into the corresponding details view model
+     * @param pokemonList the list of Pokemon to map
+     * @return the mapped view models list
+     */
     public List<PokemonDetailsItemViewModel> map(List<Pokemon> pokemonList) {
         List<PokemonDetailsItemViewModel> pokemonDetailsItemViewModelList = new ArrayList<>();
         for (Pokemon pokemon : pokemonList) {

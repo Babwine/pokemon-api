@@ -12,6 +12,9 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
+/**
+ * A class for the Pokemon DAO in the database
+ */
 @Dao
 public interface PokemonDao {
 

@@ -16,10 +16,15 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class for the adapter of the GridFragment's recyclerview
+ */
 public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder> {
 
 
-
+    /**
+     * A class for the inner view holder
+     */
     public static class PokemonViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextView;
         private TextView typesTextView;
@@ -64,11 +69,18 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
     private List<PokemonItemViewModel> pokemonItemViewModelList;
     private PokemonActionInterface pokemonActionInterface;
 
+    /**
+     * Constructor
+     * @param pokemonActionInterface the interface on which we will listen
+     */
     public PokemonAdapter(PokemonActionInterface pokemonActionInterface) {
         this.pokemonItemViewModelList = new ArrayList<>();
         this.pokemonActionInterface = pokemonActionInterface;
     }
-
+    /**
+     * A function to bind viewmodels
+     * @param pokemonItemViewModelList the list of view models to bind
+     */
     public void bindViewModels(List<PokemonItemViewModel> pokemonItemViewModelList) {
         this.pokemonItemViewModelList.clear();
         this.pokemonItemViewModelList.addAll(pokemonItemViewModelList);

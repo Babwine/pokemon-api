@@ -2,6 +2,9 @@ package android.eservices.webrequests.data.api.model.pokemon;
 
 import android.eservices.webrequests.data.api.model.pokemon.typeelement.Type;
 
+/**
+ * A class to represent the Types list of a Pokemon
+ */
 public class TypeElement {
     private Type type;
 

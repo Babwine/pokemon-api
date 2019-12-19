@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * A class for a Pokemon entity to stock in the database
+ */
 @Entity
 public class PokemonEntity {
     @NonNull

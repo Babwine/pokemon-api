@@ -14,6 +14,9 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * A class for the activity that displays all needed details of a Pokemon
+ */
 public class PokemonDetailsDisplayActivity extends Activity implements PokemonDetailsContract.View, PokemonDetailsActionInterface {
     private PokemonDetailsContract.Presenter pokemonDetailsPresenter;
     private PokemonDetailsAdapter pokemonDetailsAdapter;
@@ -37,10 +40,16 @@ public class PokemonDetailsDisplayActivity extends Activity implements PokemonDe
         setupDetailsView();
     }
 
+    /**
+     * A function to setup the view
+     */
     private void setupDetailsView() {
         pokemonDetailsPresenter.getPokemonById(this.pokemonId);
     }
 
+    /**
+     * A function to setup the recycler view in which the Pokemon's main view is
+     */
     private void setupRecyclerView() {
         recyclerView = this.findViewById(R.id.pokemon_details_recycler_view);
         pokemonDetailsAdapter = new PokemonDetailsAdapter(this);

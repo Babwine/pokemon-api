@@ -13,13 +13,21 @@ import io.reactivex.CompletableSource;
 import io.reactivex.Single;
 import io.reactivex.functions.Function;
 
-
+/**
+ * An implementation of the PokemonDisplayRepository interface
+ */
 public class PokemonDisplayDataRepository implements PokemonDisplayRepository {
 
     private PokemonDisplayLocalDataSource pokemonDisplayLocalDataSource;
     private PokemonDisplayRemoteDataSource pokemonDisplayRemoteDataSource;
     private PokemonToPokemonEntityMapper mapper;
 
+    /**
+     * Contructor
+     * @param pokemonDisplayLocalDataSource the local repo
+     * @param pokemonDisplayRemoteDataSource the distant repo
+     * @param mapper the mapper used to stock Pokemon entities
+     */
     public PokemonDisplayDataRepository(PokemonDisplayLocalDataSource pokemonDisplayLocalDataSource,
                                         PokemonDisplayRemoteDataSource pokemonDisplayRemoteDataSource,
                                         PokemonToPokemonEntityMapper mapper) {
@@ -27,6 +35,7 @@ public class PokemonDisplayDataRepository implements PokemonDisplayRepository {
         this.pokemonDisplayRemoteDataSource = pokemonDisplayRemoteDataSource;
         this.mapper = mapper;
     }
+
 
     @Override
     public Single<Pokemon> getPokemonById(int id) {
@@ -43,21 +52,4 @@ public class PokemonDisplayDataRepository implements PokemonDisplayRepository {
         return pokemonDisplayRemoteDataSource.searchPokemonByInterval(offset, limit);
     }
 
-    @Override
-    public Completable addPokemonDetails(int pokemonId) {
-        return pokemonDisplayRemoteDataSource.getPokemonById(pokemonId)
-                .map(new Function<Pokemon, PokemonEntity>() {
-
-                    @Override
-                    public PokemonEntity apply(Pokemon pokemon) throws Exception {
-                        return mapper.map(pokemon);
-                    }
-                })
-                .flatMapCompletable(new Function<PokemonEntity, CompletableSource>() {
-                    @Override
-                    public CompletableSource apply(PokemonEntity pokemonEntity) throws Exception {
-                        return pokemonDisplayLocalDataSource.addPokemonDetails(pokemonEntity);
-                    }
-                });
-    }
 }

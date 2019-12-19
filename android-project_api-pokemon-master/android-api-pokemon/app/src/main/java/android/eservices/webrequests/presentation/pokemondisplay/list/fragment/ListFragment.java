@@ -28,6 +28,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * A class for the fragment that displays all Pokémon as a List
+ */
 public class ListFragment extends Fragment implements PokemonListContract.View, PokemonActionInterface {
 
     public static final String TAB_NAME = "List";
@@ -65,6 +68,9 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         this.displayPokemonXtoXPlusY(0,807);
     }
 
+    /**
+     * A function to setup the search bar and its behaviour
+     */
     private void setupSearchView() {
         searchView = rootView.findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -104,6 +110,9 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         });
     }
 
+    /**
+     * A function to setup the recyclerview used to display the list
+     */
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         pokemonAdapter = new PokemonAdapter(this);
@@ -131,6 +140,11 @@ public class ListFragment extends Fragment implements PokemonListContract.View, 
         startActivity(i);
     }
 
+    /**
+     * A function to display a list of Pokémon which the first is the number <code>x</code> and the last is the number <code>x</code>+<code>y</code>
+     * @param x the index of the offset of the list
+     * @param y the index of the limit of the list
+     */
     public void displayPokemonXtoXPlusY(int x, int y) {
         pokemonListPresenter.searchPokemonByInterval(x, y);
     }

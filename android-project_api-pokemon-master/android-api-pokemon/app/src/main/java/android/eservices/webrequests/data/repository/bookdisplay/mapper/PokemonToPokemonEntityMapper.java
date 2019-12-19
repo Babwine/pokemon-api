@@ -8,7 +8,15 @@ import android.eservices.webrequests.data.entity.PokemonEntity;
 
 import java.util.List;
 
+/**
+ * A class to map a Pokemon object into a PokemonEntity object
+ */
 public class PokemonToPokemonEntityMapper {
+    /**
+     * The mapping function of the class
+     * @param pokemon the Pokemon to map into a PokemonEntity
+     * @return a PokemonEntity corresponding to the Pokemon <code>pokemon</code>
+     */
     public PokemonEntity map(Pokemon pokemon) {
         PokemonEntity pokemonEntity = new PokemonEntity();
         pokemonEntity.setId(pokemon.getId());

@@ -4,7 +4,7 @@ import android.eservices.webrequests.data.api.model.Pokemon;
 import android.eservices.webrequests.data.api.model.PokemonSearchResponse;
 import android.eservices.webrequests.data.api.model.pokemonsearchresponse.PokemonElement;
 import android.eservices.webrequests.data.repository.bookdisplay.PokemonDisplayRepository;
-import android.eservices.webrequests.presentation.pokemondisplay.list.mapper.PokemonToViewModelMapper;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.mapper.PokemonToViewModelMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +14,21 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+
+/**
+ * An implementation of the contract's presenter for the GridFragment
+ */
 public class PokemonGridPresenter implements PokemonGridContract.Presenter {
     private PokemonGridContract.View view;
     private PokemonToViewModelMapper mapper;
     private PokemonDisplayRepository pokemonDisplayRepository;
     private CompositeDisposable compositeDisposable;
 
-
+    /**
+     * Contructor
+     * @param pokemonDisplayRepository the app's repository
+     * @param mapper the mapper which maps a Pokemon into a ViewModel
+     */
     public PokemonGridPresenter(PokemonDisplayRepository pokemonDisplayRepository, PokemonToViewModelMapper mapper) {
         this.pokemonDisplayRepository = pokemonDisplayRepository;
         this.mapper = mapper;

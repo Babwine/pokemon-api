@@ -1,5 +1,8 @@
 package android.eservices.webrequests.presentation.pokemondisplay.list.adapter;
 
+/**
+ * A class for a view model which will represent a Pokemon
+ */
 public class PokemonItemViewModel {
     private int pokemonId;
     private String spriteUrl;

@@ -1,14 +1,14 @@
 package android.eservices.webrequests.data.repository.bookdisplay.local;
 
-import android.eservices.webrequests.data.api.model.Pokemon;
 import android.eservices.webrequests.data.db.PokemonDatabase;
 import android.eservices.webrequests.data.entity.PokemonEntity;
-
-import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
+/**
+ * A class for the local data source
+ */
 public class PokemonDisplayLocalDataSource {
     private PokemonDatabase pokemonDatabase;
 

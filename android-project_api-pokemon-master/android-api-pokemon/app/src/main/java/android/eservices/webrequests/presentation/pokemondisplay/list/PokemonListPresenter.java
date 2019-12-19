@@ -14,13 +14,20 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * An implementation of the contract's presenter for the ListFragment
+ */
 public class PokemonListPresenter implements PokemonListContract.Presenter {
     private PokemonListContract.View view;
     private PokemonToViewModelMapper mapper;
     private PokemonDisplayRepository pokemonDisplayRepository;
     private CompositeDisposable compositeDisposable;
 
-
+    /**
+     * Contructor
+     * @param pokemonDisplayRepository the app's repository
+     * @param mapper the mapper which maps a Pokemon into a ViewModel
+     */
     public PokemonListPresenter(PokemonDisplayRepository pokemonDisplayRepository, PokemonToViewModelMapper mapper) {
         this.pokemonDisplayRepository = pokemonDisplayRepository;
         this.mapper = mapper;

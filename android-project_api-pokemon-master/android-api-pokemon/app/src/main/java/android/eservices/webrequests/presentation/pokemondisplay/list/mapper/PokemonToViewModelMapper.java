@@ -8,8 +8,16 @@ import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.Po
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class for the mapper which maps a Pokemon into a View Model
+ */
 public class PokemonToViewModelMapper {
 
+    /**
+     * A function to map a Pokemon into a view model
+     * @param pokemon the Pokemon to map
+     * @return the mapped view model
+     */
     public PokemonItemViewModel map(Pokemon pokemon) {
         PokemonItemViewModel pokemonItemViewModel = new PokemonItemViewModel();
 
@@ -21,6 +29,11 @@ public class PokemonToViewModelMapper {
         return pokemonItemViewModel;
     }
 
+    /**
+     * A function to map a PokemonElement, which comes from a PokemonSearchResponse's list, into a view model
+     * @param pokemonElem the PokemonElement to map
+     * @return the mapped view model
+     */
     public PokemonItemViewModel mapElem(PokemonElement pokemonElem) {
         PokemonItemViewModel pokemonItemViewModel = new PokemonItemViewModel();
 
@@ -35,6 +48,11 @@ public class PokemonToViewModelMapper {
         return pokemonItemViewModel;
     }
 
+    /**
+     * A function to map all Pokemon in the list into a list of corresponding view models
+     * @param pokemonList the list of Pokemon to map
+     * @return the list of mapped view models
+     */
     public List<PokemonItemViewModel> map(List<Pokemon> pokemonList) {
         List<PokemonItemViewModel> pokemonItemViewModelList = new ArrayList<>();
         for (Pokemon pokemon : pokemonList) {
@@ -43,6 +61,11 @@ public class PokemonToViewModelMapper {
         return pokemonItemViewModelList;
     }
 
+    /**
+     * A function to map all PokemonElement in the list into a list of corresponding view models
+     * @param pokemonElemList the list of PokemonElement to map
+     * @return the list of mapped view models
+     */
     public List<PokemonItemViewModel> mapElem(List<PokemonElement> pokemonElemList) {
         List<PokemonItemViewModel> pokemonItemViewModelList = new ArrayList<>();
         for (PokemonElement pokemonElem : pokemonElemList) {

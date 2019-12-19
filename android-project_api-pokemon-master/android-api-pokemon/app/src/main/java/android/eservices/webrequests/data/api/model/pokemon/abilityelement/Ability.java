@@ -1,5 +1,8 @@
 package android.eservices.webrequests.data.api.model.pokemon.abilityelement;
 
+/**
+ * A class to represent the Ability of a Pokemon
+ */
 public class Ability {
     private String name;
 

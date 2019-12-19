@@ -1,5 +1,8 @@
 package android.eservices.webrequests.data.api.model.pokemon;
 
+/**
+ * A class used to represent a species of a Pokemon
+ */
 public class Species {
     private String name;
 

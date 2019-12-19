@@ -1,5 +1,8 @@
 package android.eservices.webrequests.data.api.model.pokemon;
 
+/**
+ * A class to represent the Sprites of a Pokemon
+ */
 public class Sprites {
     private String front_default;
     private String front_female;

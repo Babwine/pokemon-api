@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * A class to represent the Pokemon Java object
+ */
 public class Pokemon {
 
     private int id;

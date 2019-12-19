@@ -6,9 +6,16 @@ import android.eservices.webrequests.data.api.model.PokemonSearchResponse;
 
 import io.reactivex.Single;
 
+/**
+ * A class for the distant data source
+ */
 public class PokemonDisplayRemoteDataSource {
     private PokemonDisplayService pokemonDisplayService;
 
+    /**
+     * Constructor
+     * @param pokemonDisplayService the service used
+     */
     public PokemonDisplayRemoteDataSource(PokemonDisplayService pokemonDisplayService) {
         this.pokemonDisplayService = pokemonDisplayService;
     }

@@ -1,5 +1,8 @@
 package android.eservices.webrequests.presentation.pokemondisplay.details.adapter;
 
+/**
+ * A class for a Pokemon details based view model
+ */
 public class PokemonDetailsItemViewModel {
 
     private int pokemonId;

@@ -16,6 +16,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class for the adapter of the activity's recyclerview
+ */
 public class PokemonDetailsAdapter extends RecyclerView.Adapter<PokemonDetailsAdapter.PokemonViewHolder> {
 
     public static class PokemonViewHolder extends RecyclerView.ViewHolder {
@@ -60,11 +63,19 @@ public class PokemonDetailsAdapter extends RecyclerView.Adapter<PokemonDetailsAd
     private List<PokemonDetailsItemViewModel> pokemonDetailsItemViewModelList;
     private PokemonDetailsActionInterface pokemonActionInterface;
 
+    /**
+     * Contructor
+     * @param pokemonActionInterface the interface on which we will listen
+     */
     public PokemonDetailsAdapter(PokemonDetailsActionInterface pokemonActionInterface) {
         this.pokemonDetailsItemViewModelList = new ArrayList<>();
         this.pokemonActionInterface = pokemonActionInterface;
     }
 
+    /**
+     * A function to bind the view model
+     * @param pokemonDetailsItemViewModel the view model to bind
+     */
     public void bindViewModels(PokemonDetailsItemViewModel pokemonDetailsItemViewModel) {
         this.pokemonDetailsItemViewModelList.clear();
         this.pokemonDetailsItemViewModelList.add(pokemonDetailsItemViewModel);

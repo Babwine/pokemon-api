@@ -6,10 +6,10 @@ import android.eservices.webrequests.data.di.FakeDependencyInjection;
 import android.eservices.webrequests.presentation.pokemondisplay.details.activity.PokemonDetailsDisplayActivity;
 import android.eservices.webrequests.presentation.pokemondisplay.grid.PokemonGridContract;
 import android.eservices.webrequests.presentation.pokemondisplay.grid.PokemonGridPresenter;
-import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonActionInterface;
-import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonAdapter;
-import android.eservices.webrequests.presentation.pokemondisplay.list.adapter.PokemonItemViewModel;
-import android.eservices.webrequests.presentation.pokemondisplay.list.mapper.PokemonToViewModelMapper;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.adapter.PokemonActionInterface;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.adapter.PokemonAdapter;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.adapter.PokemonItemViewModel;
+import android.eservices.webrequests.presentation.pokemondisplay.grid.mapper.PokemonToViewModelMapper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +27,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * A class for the fragment that displays all Pokémon as a Grid
+ */
 public class GridFragment extends Fragment implements PokemonGridContract.View, PokemonActionInterface {
 
 
@@ -61,7 +64,9 @@ public class GridFragment extends Fragment implements PokemonGridContract.View, 
         pokemonGridPresenter.attachView(this);
         this.displayPokemonXtoXPlusY(0,807);
     }
-
+    /**
+     * A function to setup the search bar and its behaviour
+     */
     private void setupSearchView() {
         searchView = rootView.findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -100,7 +105,9 @@ public class GridFragment extends Fragment implements PokemonGridContract.View, 
             }
         });
     }
-
+    /**
+     * A function to setup the recyclerview used to display the list
+     */
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         pokemonAdapter = new PokemonAdapter(this);

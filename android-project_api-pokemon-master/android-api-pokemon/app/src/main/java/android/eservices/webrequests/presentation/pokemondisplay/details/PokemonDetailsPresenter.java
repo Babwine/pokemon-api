@@ -9,13 +9,20 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * A class to implement the presenter from the contract for Pokemon Details
+ */
 public class PokemonDetailsPresenter implements PokemonDetailsContract.Presenter {
     private PokemonDetailsContract.View view;
     private PokemonDetailsToViewModelMapper mapper;
     private PokemonDisplayRepository pokemonDisplayRepository;
     private CompositeDisposable compositeDisposable;
 
-
+    /**
+     * Constructor
+     * @param pokemonDisplayRepository the main repository
+     * @param mapper the mapper which maps a Pokemon into a pokemon details based view model
+     */
     public PokemonDetailsPresenter(PokemonDisplayRepository pokemonDisplayRepository, PokemonDetailsToViewModelMapper mapper) {
         this.pokemonDisplayRepository = pokemonDisplayRepository;
         this.mapper = mapper;
